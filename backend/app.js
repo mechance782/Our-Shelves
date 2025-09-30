@@ -1,17 +1,20 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import db from "./db.js";
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import morgan from "morgan";
 import router from "./router/router.js";
 
 dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors({ origin: true }));
+app.use(morgan("dev"));
 app.use(express.json());
-app.use('/', router);
 
 app.get('/', (req, res) => res.send('Hello World'));
+app.get("/healthz", (_req, res) => res.json({ ok: true }));
+app.use("/api", router);
 
 // app.get("/db-test", async (_, res) => {
 //     try {
