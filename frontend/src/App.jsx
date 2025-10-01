@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import './App.css'
+import { NavLink, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import Search from "./pages/Search.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-   <>
-   <h1>Hello World</h1>
-   </>
-  )
-}
+    <div style={{ fontFamily: "system-ui", padding: 20 }}>
+      <h1>Our Shelves</h1>
+      <nav style={{ display: "flex", gap: 12, marginBottom: 20 }}>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </nav>
 
-export default App
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+    </div>
+  );
+}
