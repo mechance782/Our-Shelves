@@ -14,7 +14,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.get('/', (req, res) => res.send('Hello World'));
-app.get("/healthz", (_req, res) => res.json({ ok: true }));
 app.use("/api", router);
 
 // app.get("/db-test", async (_, res) => {
