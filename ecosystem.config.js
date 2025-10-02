@@ -3,8 +3,8 @@ module.exports = {
     {
       name: "backend",
       cwd: "./backend",
-      script: "cmd",
-      args: "/c npm run dev",
+      script: "npm",
+      args: "run dev",   
       env: {
         NODE_ENV: "development",
         PORT: 3000
@@ -16,8 +16,8 @@ module.exports = {
     {
       name: "frontend",
       cwd: "./frontend",
-      script: "cmd",
-      args: "/c npm run dev",
+      script: "npm",
+      args: "run dev -- --host 0.0.0.0",   
       env: {
         NODE_ENV: "development",
         PORT: 5173
