@@ -7,6 +7,7 @@ import router from "./router/router.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = "0.0.0.0";
 
 app.use(cors({ origin: true }));
 app.use(morgan("dev"));
@@ -26,6 +27,6 @@ app.use("/api", router);
 //     }
 //   });  
 
-app.listen(PORT, () =>
+app.listen(PORT, HOST, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );
