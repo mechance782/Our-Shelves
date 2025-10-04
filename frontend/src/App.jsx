@@ -1,14 +1,15 @@
-import { useState } from 'react'
 import './App.css'
-import Header from './components/Header.jsx'
+import Header from './components/Header.JSX'
+import Welcome from './components/Welcome.jsx'
+import SearchSection from './components/SearchSection.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-   <>
-   <Header />
-   </>
+    <>
+      <Header />
+      <Welcome />
+      <SearchSection />
+    </>
   )
 }
 

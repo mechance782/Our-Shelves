@@ -1,0 +1,38 @@
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    background: linear-gradient(135deg, #004158 0%, #006080 100%);
+    color: white;
+    text-align: center;
+}
+
+.welcome-content {
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+.welcome-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.1rem;
+    }
+}
