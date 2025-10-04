@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import db from "./db.js";
 import router from "./router/router.js";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
 app.use('/', router);
 
 app.get('/', (req, res) => res.send('Hello World'));
