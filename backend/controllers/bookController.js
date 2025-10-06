@@ -1,5 +1,3 @@
-
-
 export const fetchBooks = async (req, res) => {
     const bookName = req.params.bookName;
 
@@ -8,12 +6,8 @@ export const fetchBooks = async (req, res) => {
         const openLibraryUrl = `https://openlibrary.org/search.json?title=${bookName}`;
 
         const response = await fetch(openLibraryUrl, {
-            headers: {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
         });
 
         if (!response.ok) {
@@ -26,7 +20,7 @@ export const fetchBooks = async (req, res) => {
         const books = data.docs.map(book => ({
             title: book.title,
             author: book.author_name?.[0] || 'Unknown',
-            Reyear: book.first_publish_year,
+            year: book.first_publish_year,
             cover: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
             pages: book.number_of_pages_median
         }));

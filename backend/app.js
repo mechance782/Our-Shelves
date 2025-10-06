@@ -1,14 +1,17 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import db from "./db.js";
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import morgan from "morgan";
 import router from "./router/router.js";
 import cors from 'cors';
 
 dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = "0.0.0.0";
 
+app.use(cors({ origin: true }));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 app.use('/', router);
@@ -25,6 +28,6 @@ app.get('/', (req, res) => res.send('Hello World'));
 //     }
 //   });  
 
-app.listen(PORT, () =>
+app.listen(PORT, HOST, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );
