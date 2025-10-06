@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import db from "./db.js";
-import router from "./router/router.js";
+import db from './db.js';
+import router from './router/router.js';
 import cors from 'cors';
+import morgan from 'morgan';
 
 dotenv.config();
 
@@ -10,20 +11,28 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(cors());
-app.use('/', router);
+app.use(cors({ origin: true }));
+app.use(morgan('dev'));
 
-app.get('/', (req, res) => res.send('Hello World'));
+app.get('/', (req, res) => res.send('Welcome to Our Shelves API!'));
+app.use('/api', router);
 
-// app.get("/db-test", async (_, res) => {
-//     try {
-//       const [rows] = await db.query("SELECT NOW() AS now");
-//       res.json({ message: "Database connected!", time: rows[0].now });
-//     } catch (error) {
-//       console.error("Database error:", error);
-//       res.status(500).json({ error: "Database connection failed" });
-//     }
-//   });  
+// testing database connection
+app.get('/db-test', async (req, res) => {
+    try {
+      const [rows] = await db.query('SELECT * FROM books');
+      res.json({
+        message: 'Database connected successfully!',
+        books: rows,
+      });
+    } catch (error) {
+      console.error('Database error:', error);
+      res.status(500).json({
+        error: 'Database connection failed',
+        details: error.message,
+      });
+    }
+  }); 
 
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
