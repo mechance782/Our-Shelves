@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
 import router from "./router/router.js";
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
@@ -12,9 +13,10 @@ const HOST = "0.0.0.0";
 app.use(cors({ origin: true }));
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
+app.use('/', router);
 
 app.get('/', (req, res) => res.send('Hello World'));
-app.use("/api", router);
 
 // app.get("/db-test", async (_, res) => {
 //     try {
