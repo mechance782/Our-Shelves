@@ -1,11 +1,11 @@
 import Welcome from '../components/Welcome.jsx';
 import SearchSection from '../components/SearchSection.jsx'
 
-const Home = () => {
+const Home = ({ setSelectedBook }) => {
     return (
     <>
     <Welcome />
-    <SearchSection />
+    <SearchSection setSelectedBook={setSelectedBook} />
     </>
     )
 
