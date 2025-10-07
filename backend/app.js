@@ -15,7 +15,7 @@ app.use(cors({ origin: true }));
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => res.send('Welcome to Our Shelves API!'));
-app.use('/api', router);
+app.use('/', router);
 
 // testing database connection
 app.get('/db-test', async (req, res) => {
