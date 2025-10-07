@@ -6,6 +6,7 @@ const SearchSection = () => {
     const [searchResults, setSearchResults] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [book, setBook] = useState(null);
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -37,6 +38,10 @@ const SearchSection = () => {
             setLoading(false);
         }
     };
+
+    const selectBook = (book) => {
+        setBook(book)
+    }
 
     return (
         <div className="search-section">
@@ -103,6 +108,9 @@ const SearchSection = () => {
                                     </div>
                                 </div>
                             ))}
+                            <Link id='select-book-button' to="/BookDetail" onClick={selectBook(book)}>
+                                Open Book
+                            </Link>
                         </div>
                     </div>
                 )}

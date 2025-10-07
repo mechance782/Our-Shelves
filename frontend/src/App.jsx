@@ -1,16 +1,15 @@
-import './App.css'
-import Header from './components/Header.jsx'
-import Welcome from './components/Welcome.jsx'
-import SearchSection from './components/SearchSection.jsx'
+import Header from "./components/Header.jsx";
+import Home from "./pages/Home.jsx";
 
 function App() {
   return (
     <>
+
       <Header />
-      <Welcome />
-      <SearchSection />
+      <Home />
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
