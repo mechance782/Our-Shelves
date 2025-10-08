@@ -1,19 +1,17 @@
 import { Router } from "express";
 import { fetchBooks } from "../controllers/bookController.js";
-import { listBooks, getBookById, createBook } from "../controllers/booksDbController.js";
+import { listBooks, getBookById, createBook, updateBook, deleteBook } from "../controllers/booksDbController.js";
 
 const router = Router();
 
 // fetch books from open library API by book name
-router.get("/search/:bookName", fetchBooks);
+router.get("/books/:bookName", fetchBooks);
 
-// get all books
+// CRUD routes for database
 router.get("/books", listBooks);
-
-// get single book by id
-router.get("/books/:id", getBookById);
-
-// post new book
+router.get("/books/id/:id", getBookById);
 router.post("/books", createBook);
+router.put("/books/:id", updateBook);
+router.delete("/books/:id", deleteBook);
 
 export default router;
