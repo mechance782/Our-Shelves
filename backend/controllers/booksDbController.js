@@ -68,7 +68,7 @@ export const createBook = async (req, res) => {
     try {
         const [result] = await db.execute(`
             INSERT INTO books (title, author, genre, year, cover)
-            VALUES (?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?)
         `, [title, author || null, genre || null, year || null, cover || null]);
 
         res.status(201).json({
