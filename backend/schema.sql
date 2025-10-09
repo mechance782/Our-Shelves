@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS users;
 
-
+-- create a table for users
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -10,6 +10,7 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- create a table for books
 CREATE TABLE books (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,

@@ -5,15 +5,18 @@ import router from './router/router.js';
 import cors from 'cors';
 import morgan from 'morgan';
 
+// load environment variables from .env file
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// middleware
 app.use(express.json());
 app.use(cors({ origin: true }));
 app.use(morgan('dev'));
 
+// routes
 app.get('/', (req, res) => res.send('Welcome to Our Shelves API!'));
 app.use('/', router);
 
@@ -34,6 +37,7 @@ app.get('/db-test', async (req, res) => {
     }
   }); 
 
+// start the server
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );

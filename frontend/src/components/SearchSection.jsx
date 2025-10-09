@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './css/SearchSection.css';
 
+// search section component
 const SearchSection = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    // handle search form submission
     const handleSearch = async (e) => {
         e.preventDefault();
 
@@ -15,13 +17,14 @@ const SearchSection = () => {
             return;
         }
 
+        // reset states before new search
         setLoading(true);
         setError(null);
         setSearchResults(null);
 
         try {
             // Send request to backend for fetching book results
-            const response = await fetch(`http://localhost:3000/books/search/${encodeURIComponent(searchQuery)}`);
+            const response = await fetch(`http://localhost:3000/books/${encodeURIComponent(searchQuery)}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -97,8 +100,8 @@ const SearchSection = () => {
                                     <div className="book-info">
                                         <h4 className="book-title">{book.title}</h4>
                                         <p className="book-author">by {book.author}</p>
-                                        {book.year && (
-                                            <p className="book-year">{book.year}</p>
+                                        {book.Reyear && (
+                                            <p className="book-year">{book.Reyear}</p>
                                         )}
                                     </div>
                                 </div>
