@@ -5,7 +5,7 @@ import { listBooks, getBookById, createBook, updateBook, deleteBook } from "../c
 const router = Router();
 
 // fetch books from open library API by book name
-router.get("/books/:bookName", fetchBooks);
+router.get("/books/search/:bookName", fetchBooks);
 
 // CRUD routes for database
 router.get("/books", listBooks);

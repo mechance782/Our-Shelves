@@ -11,10 +11,15 @@ module.exports = {
       },
       env_production: {
         NODE_ENV: "production",
+<<<<<<< HEAD
         PORT: 3000,
       },
       watch: false,
       autorestart: true,
+=======
+        PORT: 3000
+      }
+>>>>>>> fb68d94 (updated the book search and frontend fetch URL to match backend)
     },
     {
       name: "frontend",

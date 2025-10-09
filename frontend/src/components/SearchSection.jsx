@@ -21,7 +21,7 @@ const SearchSection = () => {
 
         try {
             // Send request to backend for fetching book results
-            const response = await fetch(`http://localhost:3000/books/${encodeURIComponent(searchQuery)}`);
+            const response = await fetch(`http://localhost:3000/books/search/${encodeURIComponent(searchQuery)}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -97,8 +97,8 @@ const SearchSection = () => {
                                     <div className="book-info">
                                         <h4 className="book-title">{book.title}</h4>
                                         <p className="book-author">by {book.author}</p>
-                                        {book.Reyear && (
-                                            <p className="book-year">{book.Reyear}</p>
+                                        {book.year && (
+                                            <p className="book-year">{book.year}</p>
                                         )}
                                     </div>
                                 </div>
