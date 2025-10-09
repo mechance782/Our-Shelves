@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/Welcome.css';
 
+// welcome component
 const Welcome = () => {
     return (
         <div className="welcome-container">

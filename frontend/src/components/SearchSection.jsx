@@ -8,6 +8,7 @@ const SearchSection = ( { setSelectedBook }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    // handle search form submission
     const handleSearch = async (e) => {
         e.preventDefault();
 
@@ -16,6 +17,7 @@ const SearchSection = ( { setSelectedBook }) => {
             return;
         }
 
+        // reset states before new search
         setLoading(true);
         setError(null);
         setSearchResults(null);

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/OurShelvesLogo.png";
 import "./css/Header.css";
 
+// header component with logo, search bar, and buttons
 const Header = () => {
   return (
     <header className="header">

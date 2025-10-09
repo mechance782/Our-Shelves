@@ -4,6 +4,7 @@ import BookDetail from "./pages/BookDetail.jsx";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
+// App component that includes Header, Welcome, and SearchSection components
 function App() {
 
   const [selectedBook, setSelectedBook] = useState(null);
