@@ -141,6 +141,26 @@
     padding: 20px;
 }
 
+.select-book-button {
+    background-color: #D86926;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 6px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    margin: 8px 10px 10px 10px;
+    display: inline-block;
+}
+
+.select-book-button:hover {
+    background-color: #B85520;
+}
+
+
 .book-title {
     font-size: 1.1rem;
     font-weight: 600;

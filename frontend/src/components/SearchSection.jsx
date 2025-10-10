@@ -108,7 +108,7 @@ const SearchSection = ( { setSelectedBook }) => {
                                             <p className="book-year">{book.Reyear}</p>
                                         )}
                                     </div>
-                                    <Link id='select-book-button' to="/BookDetail" onClick={() => selectBook(book)}>
+                                    <Link className='select-book-button' to="/BookDetail" onClick={() => selectBook(book)}>
                                         Open Book
                                     </Link>
                                 </div>
