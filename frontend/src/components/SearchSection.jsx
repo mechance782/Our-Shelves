@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './css/SearchSection.css';
 
-// search section component
-const SearchSection = () => {
+const SearchSection = ( { setSelectedBook }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ const SearchSection = () => {
 
         try {
             // Send request to backend for fetching book results
-            const response = await fetch(`http://localhost:3000/books/${encodeURIComponent(searchQuery)}`);
+            const response = await fetch(`http://localhost:3000/books/search/${encodeURIComponent(searchQuery)}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -40,6 +40,10 @@ const SearchSection = () => {
             setLoading(false);
         }
     };
+
+    const selectBook = (book) => {
+        setSelectedBook(book)
+    }
 
     return (
         <div className="search-section">
@@ -104,8 +108,13 @@ const SearchSection = () => {
                                             <p className="book-year">{book.Reyear}</p>
                                         )}
                                     </div>
+                                    <Link className='select-book-button' to="/BookDetail" onClick={() => selectBook(book)}>
+                                        Open Book
+                                    </Link>
                                 </div>
+
                             ))}
+
                         </div>
                     </div>
                 )}
