@@ -6,7 +6,9 @@ import "./css/Header.css";
 const Header = () => {
   return (
     <header className="header">
-      <img src={logo} alt="Our Shelves" className="header-logo" />
+      <Link to="/">
+        <img src={logo} alt="Our Shelves" className="header-logo" />
+      </Link>
 
       <div className="header-search-container">
         <input
