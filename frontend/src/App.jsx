@@ -3,6 +3,7 @@ import Home from "./pages/Home.jsx";
 import BookDetail from "./pages/BookDetail.jsx";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import Library from "./pages/Library.jsx";
 
 // App component that includes Header, Welcome, and SearchSection components
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setSelectedBook={setSelectedBook} />} />
         <Route path="/BookDetail" element={<BookDetail book={selectedBook} />} />
+        <Route path="/Library" element={<Library />} /> 
       </Routes>
 
     </>
