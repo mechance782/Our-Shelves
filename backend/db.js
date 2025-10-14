@@ -3,23 +3,22 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-let connection;
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT || 3306,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
 
-try {
-    // create a new MySQL connection using environment variables
-  connection = await mysql.createConnection({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+pool.getConnection()
+  .then(() => console.log("Database connected successfully"))
+  .catch((err) => {
+    console.error("Failed to connect to the database:", err.message);
+    process.exit(1);
   });
-  // if successful, log a success message
-  console.log("Database connected successfully");
-} catch (error) {
-    // if there's an error, log it and exit the process
-  console.error("Failed to connect to the database:", error.message);
-  process.exit(1);
-}
 
-export default connection;
+export default pool;

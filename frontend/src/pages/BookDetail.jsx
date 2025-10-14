@@ -5,7 +5,7 @@ const BookDetail = ({ book }) => {
 
   const addToLibrary = async (book) => {
     try {
-      const URL = `http://localhost:3000/books`;
+      const URL = `${import.meta.env.VITE_API_URL}/books`;
       const options = {
         method: "POST",
         headers: {

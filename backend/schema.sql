@@ -17,8 +17,8 @@ CREATE TABLE books (
   author VARCHAR(255),
   genre VARCHAR(100),
   description TEXT,
-  published_year INT,
-  cover_image VARCHAR(255),
+  year INT,
+  cover VARCHAR(255),
   created_by INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
