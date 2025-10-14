@@ -1,6 +1,6 @@
 import "./css/BookCard.css";
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, onDelete }) => {
 
     
   const deleteBook = async () => {
@@ -24,6 +24,8 @@ const BookCard = ({ book }) => {
       }
       
       alert(`Successfully deleted ${book.title} from your library!`);
+
+      onDelete(book.id);
 
     } catch (err) {
       console.log(err);
