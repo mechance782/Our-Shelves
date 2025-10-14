@@ -1,8 +1,134 @@
-**Project Name: Our Shelves**  
-**Partners: Augy Markham, Rebecca Riffle**
-**Partners: Alston, Daniel**
-
 # Our Shelves 
+
+**Team Members:**
+- Alston
+- Daniel
+
+---
+
+## Project Description
+
+Our Shelves is a reading tracker web application that allows users to search for books using the Open Library API, add them to a personal shelf stored in a MySQL database, view theier saved books, and manage their collection.
+
+**Current MVP Features (Sprint 2):**
+- Search for books by title (Open Library API)
+- Add books to personal library
+- View saved books
+- Delete books from library
+- Connected frontend (React) and backend (Express) with a shared database (MySQL)
+
+**Future Features (Planned):**
+- Add personal notes to books
+- Track bookmarkes (reading progress)
+- Organize books into shelves
+- Add friends and share notes privately
+- Theme customization
+
+---
+
+## Tech Stack
+
+  Layer               Technology
+- Frontned            React (Vite), React Router
+- Backend             Node.js, Express.js
+- Database            MySQL (using `mysql2/promise`)
+- External API        Open Library API
+- Deployment PM2      Ubuntu VM + PM2
+
+---
+
+## Prerequisites
+
+Before running the project, make sure you have the following installed:
+
+- [Node.js (v18+)]
+- [npm]
+- [MySQL]
+- [PM2]
+
+---
+
+## Environment Variables
+
+### Backend `.env` file
+```
+DB_HOST = localhost
+DB_PORT = 3306
+DB_PASSWORD=StrongPassword123!
+DB_NAME=ourshelves
+PORT=3000
+```
+
+### Frontend `.env` file
+```
+VITE_API_URL=http://localhost:3000
+```
+
+When deploying, replace `localhost` with your server's IP or domain name.
+
+---
+
+## Local Development Setup
+
+### 1. Clone the Respository
+```bash
+git clone http://github.com/your-username/our-shelves.git
+cd our-shelves
+```
+
+### 2. Install Dependencies
+```bash
+cd backend
+npm install
+
+cd ../frontend
+npm install
+```
+
+### 3. Create `.env` files
+Create `.env` in both `backend/` and `frontend/` as shown in the Environment Variables section above
+
+### 4. Set up MySQL Database
+Login to your MySQL Server:
+```base
+mysql -u root -p
+```
+
+Run:
+```sql
+CREATE DATABASE ourshelves;
+USE ourshelves;
+```
+
+### 6. Start the Frontend
+```bash
+cd backend
+npm run dev
+```
+
+### 7. Start the Backend
+```
+cd frontend
+npm run dev
+```
+
+---
+
+## API Endpoints
+
+- GET     `/books`                    Fetch all saved books
+- POST    `/books`                    Add a new book
+- DELETE  `/books:/id`                Delete a book by ID
+- GET     `/books/search/:bookName    Search books through Open Library API
+
+---
+
+
+
+
+
+
+
 
 ## Quick Overview 
 ### What is it?  
