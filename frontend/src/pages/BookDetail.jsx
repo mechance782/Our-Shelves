@@ -24,7 +24,7 @@ const BookDetail = ({ book }) => {
 
     } catch (error) {
       console.error("Error adding book:", error);
-      alert("Failed to add book.");
+      alert(`Failed to add ${book.title} to your library.`);
     }
   };
 
@@ -32,7 +32,7 @@ const BookDetail = ({ book }) => {
     <div className="book-details">
       <h1>{book.title}</h1>
       <p>Author: {book.author}</p>
-      {book.Reyear && <p>Year: {book.Reyear}</p>}
+      {book.year && <p>Year: {book.year}</p>}
       {book.cover && <img src={book.cover} alt={book.title} />}
 
       <button id="add-book-button" onClick={() => addToLibrary(book)}>
