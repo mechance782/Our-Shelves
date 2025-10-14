@@ -18,8 +18,6 @@ const Library = () => {
         getBooks();
     }, []);
 
-    console.log(books);
-
     return (
         <div className="library-container">
             <h1 className="library-heading">My Library</h1>
