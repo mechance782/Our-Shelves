@@ -3,7 +3,6 @@
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.2s ease;
 }
 
 .book-card:hover {
@@ -32,4 +31,17 @@
     color: #888;
     font-size: 0.8rem;
     margin-bottom: 3px;
+}
+
+.delete-book-button {
+    background-color: #D86926;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0 0 0;
 }

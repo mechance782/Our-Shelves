@@ -41,7 +41,7 @@ const BookCard = ({ book, onDelete }) => {
         {book.cover && (
           <img src={book.cover} alt={book.title} className="book-cover" />
         )}
-        <button onClick={() => deleteBook()}> Delete Book</button>
+        <button onClick={() => deleteBook()} className="delete-book-button"> Delete Book</button>
       </div>
     </div>
   );
