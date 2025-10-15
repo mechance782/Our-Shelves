@@ -13,18 +13,20 @@ const Library = () => {
         setBooks(data);
     }
 
+      const handleDelete = (deletedBookId) => {
+    setBooks((prevBooks) => prevBooks.filter((book) => book.id !== deletedBookId));
+  };
+
     // Load all books when the component mounts
     useEffect(() => {
         getBooks();
     }, []);
 
-    console.log(books);
-
     return (
         <div className="library-container">
             <h1 className="library-heading">My Library</h1>
             {books.map((book) => (
-                <BookCard key={book.id} book={book} />
+                <BookCard key={book.id} book={book} onDelete={handleDelete} />
             ))}
         </div>
     )
