@@ -16,7 +16,6 @@ CREATE TABLE books (
   title VARCHAR(255) NOT NULL,
   author VARCHAR(255),
   genre VARCHAR(100),
-  description TEXT,
   year INT,
   cover VARCHAR(255),
   created_by INT,
