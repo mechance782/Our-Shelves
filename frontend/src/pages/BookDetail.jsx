@@ -1,8 +1,10 @@
 import React from "react";
 import "./../components/css/BookDetails.css";
 
+// BookDetail component to display detailed information about a book
 const BookDetail = ({ book }) => {
 
+  // Function to add the book to the library
   const addToLibrary = async (book) => {
     try {
       const URL = `${import.meta.env.VITE_API_URL}/books`;
@@ -14,6 +16,7 @@ const BookDetail = ({ book }) => {
         body: JSON.stringify(book),
       };
 
+      // send POST request to add the book
       const response = await fetch(URL, options);
 
       if (!response.ok) {

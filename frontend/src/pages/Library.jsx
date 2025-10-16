@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import BookCard from "../components/BookCard";
 import "./css/Library.css";
 
+// Library component to fetch and display all books
 const Library = () => {
 
     const [books, setBooks] = useState([]);
 
+    // Function to fetch all books from the backend API
     const getBooks = async () => {
-        const response = await fetch("http://localhost:3000/books");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/books`);
         const data = await response.json();
         setBooks(data);
     }

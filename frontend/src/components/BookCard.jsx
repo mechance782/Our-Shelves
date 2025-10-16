@@ -1,5 +1,6 @@
 import "./css/BookCard.css";
 
+<<<<<<< HEAD
 const BookCard = ({ book, onDelete }) => {
 
     
@@ -45,6 +46,21 @@ const BookCard = ({ book, onDelete }) => {
       </div>
     </div>
   );
+=======
+// BookCard component to display book details
+const BookCard = ({ book }) => {
+    return (
+        <div className="book-card">
+            <div className="book-info">
+                <h2 className="book-title">{book.title}</h2>
+                <p className="book-author">{book.author}</p>
+                {book.genre && <p className="book-genre">Genre: {book.genre}</p>}
+                {book.year && <p className="book-year">Year: {book.year}</p>}
+                {book.cover && <img src={book.cover} alt={book.title} className="book-cover" />}
+            </div>
+        </div>
+    );
+>>>>>>> 18300e3 (added comments and modified the CORS, and used proper encoding)
 };
 
 export default BookCard;

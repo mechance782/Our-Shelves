@@ -1,8 +1,10 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
+// loading environment variables (DB connection details)
 dotenv.config();
 
+// create a connection pool to the MySQL database
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT || 3306,
@@ -14,6 +16,7 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
+// test the database connection
 pool.getConnection()
   .then(() => console.log("Database connected successfully"))
   .catch((err) => {

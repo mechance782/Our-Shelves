@@ -5,19 +5,30 @@ import router from './router/router.js';
 import cors from 'cors';
 import morgan from 'morgan';
 
+// loading environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// enabling CORS (so frontend can communicate with backend from different domain)
+app.use(cors({
+    origin: [
+      'http://localhost:5173', // local development
+      'http://143.198.145.165:5173' // deployed server
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
 app.use(express.json());
-app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173' }));
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => res.send('Welcome to Our Shelves API!'));
 app.use('/', router);
 
-// test route
+// test database connection and fetch all books
 app.get('/db-test', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM books');
@@ -27,4 +38,4 @@ app.get('/db-test', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));

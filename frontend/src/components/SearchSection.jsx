@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './css/SearchSection.css';
 
+// search section component
 const SearchSection = ( { setSelectedBook }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState(null);
@@ -41,6 +42,7 @@ const SearchSection = ( { setSelectedBook }) => {
         }
     };
 
+    // select a book to view details
     const selectBook = (book) => {
         setSelectedBook(book)
     }
@@ -69,14 +71,13 @@ const SearchSection = ( { setSelectedBook }) => {
                     </div>
                 </form>
 
-                {/* Error Message */}
                 {error && (
                     <div className="error-message">
                         <p>{error}</p>
                     </div>
                 )}
 
-                {/* Search Results Grid*/}
+                {/* search results grid*/}
                 {searchResults && (
                     <div className="search-results">
                         <h3>Search Results for "{searchResults.searchTerm}"</h3>
