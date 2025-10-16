@@ -1,79 +1,201 @@
-**Project Name: Our Shelves**  
-**Partners: Augy Markham, Rebecca Riffle**
+# Our Shelves
 
-# Our Shelves 
+A reading tracker web application that allows users to search for books using the **Open Library API**, save them to their personal digital shelf, and manage their book collection.
 
-## Quick Overview 
-### What is it?  
-Reading tracking app with light social features.   
-### Who would use it? What value would it provide?**
+## Team Members
+- Alston
+- Danny
 
-* Audience: Readers who write in the margins and leave sticky notes, but want to do it digitally with their friends.  
-* Easy to share
+---
 
-### What’s the MVP?
+## Project Description
 
-- User login  
-- Users can add books to their shelf  
-- Users can add notes to their books  
-- User can update bookmark  
-- Users can filter view of notes:  
-  - By person (just them/friends)  
-  - By page number
+**Our Shelves** lets users:
+- Search for books by title using the [Open Library API](https://openlibrary.org/developers/api).
+- Add books to their personal shelf stored in a **MySQL** database.
+- View their saved books.
+- Delete books from their library.
+- Interact with a **React frontend** and **Express backend**, connected via REST API.
 
-![][image1]  
-## Project Overview 
+### Future Feature Goals
+- Add personal notes to books.
+- Track bookmarks / reading progress.
+- Organize books into multiple shelves.
+- Share shelves and notes with friends.
+- Support light/dark theme customization.
 
-Our Shelves is a low-stress space to visually track books you are reading and leave “sticky notes” in each book with page numbers, tracking page numbers with a bookmark. Friends can view your shelf. If you are reading the same book, you can share notes.
+---
 
-Example: John Doe is on page 57 of The Great Gatsby and writes “I can’t believe he said that\!”, Jane Doe is on page 130 and writes “Oh no\!” John can see that Jane left a note on page 130 and can choose to read it or wait until he’s also on/past page 130.)
+## Tech Stack
 
-Problem Statement:   
-Readers like to track what they are reading and have social features without using an app that’s entirely social-oriented. Our app captures the experience of reading a book with a friend.
+| Layer             | Technology                     |
+|--------------------|-----------------------------|
+| Frontend           | React (Vite), React Router   |
+| Backend            | Node.js, Express.js          |
+| Database           | MySQL (`mysql2/promise`)     |
+| External API       | Open Library API            |
+| Deployment         | Ubuntu Server + PM2         |
 
-Target Users:   
-People who like to track their reading and want to share some of their reading with some people (not just public).
+---
 
-## Feature Breakdown  
-MVP Features: Core CRUD functionality that could be built in the first sprint or two
+## Prerequisites
 
-* User login  
-* Users can add books to their shelf  
-* Users can add notes to their books  
-* User can update bookmark  
-* Users can filter view of notes:  
-  * By person (just them/friends)  
-  * By page number
+Make sure the following are installed:
 
-Extended Features: Additional functionality for later development phases
+- [Node.js v18+](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [MySQL](https://dev.mysql.com/downloads/mysql/)
+- [PM2](https://pm2.keymetrics.io/) (for deployment)
 
-* Users can add friends, who have to accept invite  
-* Users can remove friends  
-* User can add shelves and organize books so they display based on shelf   
-* Highly customizeable interface\! Modify color scheme / add plants, etc.
+---
 
-## Data Model Planning  
-Core Entities: 
+## Environment Variables
 
-* Users  
-* Shelves (example: Sci-Fi shelf)  
-* Books (example: Frankenstein by Mary Shelley)  
-* Bookmark (example: p. 33\)  
-* Notes (example: p 142 “”)
+### Backend `.env`
+```
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=StrongPassword123!
+DB_NAME=ourshelves
+PORT=3000
+```
 
-Key Relationships: How do these entities connect?
+### Frontend `.env`
+```
+VITE_API_URL=http://localhost:3000
+```
 
-- Each user has a shelf  
-- Each user has other users as “friends”  
-- Each shelf has books  
-- Each book has a bookmark  
-- Each book has notes
+> For production, replace `localhost` with your server IP or domain name.
 
-CRUD Operations: Specify what users can Create, Read, Update, and Delete  
-Create books  
-Create \+ Update bookmarks  
-CRUD Notes
+---
 
-## User Experience   
-User Flows: How do users accomplish key tasks?  
-Wireframes/Sketches: Basic layout ideas for main screens
+## Local Development Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/our-shelves.git
+cd our-shelves
+```
+
+### 2. Install Dependencies
+```bash
+cd backend
+npm install
+
+cd ../frontend
+npm install
+```
+
+### 3. Set Up `.env` Files
+- Create `.env` inside both `backend/` and `frontend/` directories.
+- Copy and paste the environment variable structure shown above.
+
+### 4. Set Up MySQL Database
+Login to MySQL:
+```bash
+mysql -u root -p
+```
+Then run:
+```sql
+CREATE DATABASE ourshelves;
+USE ourshelves;
+```
+(You can also run your `schema.sql` file here if you’ve set up tables.)
+
+---
+
+## Running the Application (Local)
+
+### Run the Backend:
+```bash
+cd backend
+npm run dev
+```
+Server will run on:
+```
+http://localhost:3000
+```
+
+### Run the Frontend:
+```bash
+cd frontend
+npm run dev
+```
+Frontend will run on:
+```
+http://localhost:5173
+```
+
+---
+
+## Deployment Instructions (Ubuntu + PM2)
+
+### 1. Install PM2 Globally (if not installed)
+```bash
+npm install -g pm2
+```
+
+### 2. Start Backend and Frontend with PM2
+```bash
+pm2 start ecosystem.config.js
+pm2 save
+```
+
+### 3. Check Status and Logs
+```bash
+pm2 status
+pm2 logs backend
+pm2 logs frontend
+```
+
+### 4. Auto-start PM2 on Server Reboot
+```bash
+pm2 startup
+```
+Follow the instructions output by the above command.
+
+---
+
+## API Endpoints
+
+| Method | Endpoint                        | Description                         |
+|--------|-----------------------------------|-------------------------------------|
+| GET    | `/books`                          | Fetch all saved books              |
+| POST   | `/books`                          | Add a new book                     |
+| DELETE | `/books/:id`                      | Delete a book by ID                |
+| GET    | `/books/search/:bookName`         | Search books via Open Library API  |
+
+---
+
+## Useful Commands
+
+```bash
+# Restart all processes
+pm2 restart all
+
+# View logs
+pm2 logs
+
+# Clear old logs
+pm2 flush
+
+# Stop processes
+pm2 stop all
+
+# Delete processes
+pm2 delete all
+```
+
+---
+
+## Troubleshooting Tips
+- Ensure `.env` files are correctly configured in both `frontend` and `backend`.
+- Confirm MySQL credentials match your `.env`.
+- Use `pm2 flush` to clear old logs when fixing errors.
+- Check firewall settings if deploying to a remote server (allow ports 3000 and 5173).
+
+---
+
+## License
+This project is for educational use as part of a student project at Green River College.
