@@ -25,7 +25,7 @@ const SearchSection = ( { setSelectedBook }) => {
 
         try {
             // Send request to backend for fetching book results
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/books/search/${encodeURIComponent(searchQuery)}`);
+            const response = await fetch(`http://localhost:3000/books/search/${encodeURIComponent(searchQuery)}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
