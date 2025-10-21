@@ -11,9 +11,9 @@ services:
       MYSQL_PASSWORD: Book*372
       MYSQL_DATABASE: Our_Shelves_db
     volumes:
-      - ./init/sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init/sql:/docker-entrypoint-initdb.d
       - mysqlData:/var/lib/mysql
-      
+
   api:
     build: .
     container_name: express_api
