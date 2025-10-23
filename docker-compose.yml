@@ -27,6 +27,17 @@ services:
       DB_PASSWORD: Book*372
       DB_NAME: Our_Shelves_db
     command: ["/app/wait-for-db.sh", "npm", "start"]
+
+  frontend: 
+    build: ./frontend
+    container_name: our-shelves
+    ports:
+      - '5173:5173'
+    depends_on:
+      - api
+    environment:
+      VITE_API_URL: 'http://api:3000'
+    
   
 volumes:
   mysqlData:
