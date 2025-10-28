@@ -7,9 +7,9 @@ services:
     restart: always
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: yes
-      MYSQL_USER: remoteOurShelves
-      MYSQL_PASSWORD: Book*372
-      MYSQL_DATABASE: Our_Shelves_db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: $(MYSQL_PASSWORD)
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./backend/init/sql:/docker-entrypoint-initdb.d
       - mysqlData:/var/lib/mysql
@@ -23,10 +23,23 @@ services:
       - db
     environment:
       DB_HOST: db
-      DB_USER: remoteOurShelves
-      DB_PASSWORD: Book*372
-      DB_NAME: Our_Shelves_db
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_PORT: ${DB_PORT}
+      PORT: ${PORT}
     command: ["/app/wait-for-db.sh", "npm", "start"]
+
+  frontend: 
+    build: ./frontend
+    container_name: our-shelves
+    ports:
+      - '5173:5173'
+    depends_on:
+      - api
+    environment:
+      - VITE_API_URL= ${VITE_API_URL}
+    
   
 volumes:
   mysqlData:
