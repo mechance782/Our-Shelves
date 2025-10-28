@@ -28,6 +28,7 @@ services:
       DB_NAME: ${MYSQL_DATABASE}
       DB_PORT: ${DB_PORT}
       PORT: ${PORT}
+      HOST: ${HOST}
     command: ["/app/wait-for-db.sh", "npm", "start"]
 
   frontend: 
